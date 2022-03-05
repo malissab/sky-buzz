@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :reviews
-  resources :airlines
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :airlines, param: :slug
+  resources :reviews, only: [:create, :destroy]
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root 'pages#index'
+
+  get '*path', to: 'pages#index', via: :all
 end

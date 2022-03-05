@@ -1,6 +1,6 @@
 class Airline < ApplicationRecord
     has_many :reviews
-    before_create :slugify
+    before_destroy :slugify
     
     
         def slugify
