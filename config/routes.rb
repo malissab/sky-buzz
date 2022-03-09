@@ -3,6 +3,5 @@ Rails.application.routes.draw do
   resources :reviews, only: [:create, :destroy]
 
   root 'pages#index'
-
   get '*path', to: 'pages#index', via: :all
 end

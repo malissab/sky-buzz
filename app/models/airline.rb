@@ -1,6 +1,6 @@
 class Airline < ApplicationRecord
     has_many :reviews
-    before_destroy :slugify
+    after_initialize :slugify
     
     
         def slugify
@@ -8,6 +8,8 @@ class Airline < ApplicationRecord
         end
     
         def avg_score
+            return 0 unless reviews.count.positive?
+
             reviews.average(:rating).round(2).to_f
         end
     

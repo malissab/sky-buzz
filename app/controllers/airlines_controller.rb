@@ -1,8 +1,5 @@
 class AirlinesController < ApplicationController
 
-    skip_before_action :verify_authenticity_token
-    
-
     def index
         airlines = Airline.all
         render json: AirlineSerializer.new(airlines, options).serializable_hash.to_json
@@ -46,7 +43,7 @@ class AirlinesController < ApplicationController
     private
 
     def airline_params
-        params.require(:airline).permit(:name, :image_url, :slug)
+        params.require(:airline).permit(:name, :image_url)
     end
 
     def options
