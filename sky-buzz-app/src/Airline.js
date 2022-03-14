@@ -1,21 +1,29 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
-function Airline(props) {
+function Airline() {
   const [airline, setAirline] = useState({})
   const [review, setReview] = useState({})
 
-  useEffect(() => {
-    console.log(props)
-    // const slug = props.match.param.slug
-    // const url = `/airlines/${slug}`
+  const { slug } = useParams();
 
-    // fetch(url)
-    // .then(res => res.json())
-    // .then(data => console.log(data))
+  useEffect(() => {
+    fetch(`/airlines/${slug}`)
+    .then(res => setAirline(res.data))
+ 
   }, [])
 
   return (
-    <div>Airline</div>
+    <div className="wrapper">
+      <div className='left-column'>
+        <div className='header'></div>
+        <div className='reviews'></div>
+      </div>
+      <div className='right-column'>
+        <div className='review-form'></div>
+      </div>
+
+    </div>
   )
 }
 

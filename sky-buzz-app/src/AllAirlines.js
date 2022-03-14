@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AirlineList from './AirlineList';
 import styled from 'styled-components'
 
+
 const Home = styled.div`
 text-align: center;
 max-width: 1200px;
@@ -43,7 +44,8 @@ function AllAirlines() {
       key={item.attributes.name}
       attributes={item.attributes}
       />)
-  })  
+  }) 
+  
 
   return (
     <Home>
