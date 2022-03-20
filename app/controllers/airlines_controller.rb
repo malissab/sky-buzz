@@ -1,5 +1,7 @@
 class AirlinesController < ApplicationController
 
+    skip_before_action :verify_authenticity_token
+
     def index
         airlines = Airline.all
         render json: AirlineSerializer.new(airlines, options).serializable_hash.to_json
