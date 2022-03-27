@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 
 
@@ -34,7 +33,7 @@ function ReviewForm(props) {
   return (
     <div className='Container'>
         
-        <form onSubmit={props.handleSubmit}>
+        <form  onClick={props.handleSubmit}>
             <div style={{ color: 'white' }}>Share your experience with {props.attributes.name}! Leave a review.</div>
             <div className='field'>
             <input type="text" name="title" onChange={props.handleChange} value={props.review.title} placeholder="Review Title" />
@@ -46,24 +45,18 @@ function ReviewForm(props) {
             <RatingContainer>
                 <div className='rating-title-text'>Rate This Airline</div>
                 <RatingSection>
-                <Box
-                    sx={{
-                        '& > legend': { mt: 2 },
-                    }}
-                    >
-      
       <Rating
         name="simple-controlled"
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
+        onClick={props.setRating}
       />
-    </Box>
                 </RatingSection>
             </RatingContainer>
             </div>
-            <button type='submit' onClick={props.handleSubmit}>Post Review</button>
+            <button type='submit'>Post Review</button>
         </form>
     </div>
   )
